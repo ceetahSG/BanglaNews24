@@ -74,9 +74,9 @@ const NewsArticlePage = async ({
   const summary = getSummary(article);
 
   return (
-    <main className="bg-base-200 px-4 py-8 sm:px-6 lg:px-8">
+    <main className="w-full bg-base-200 px-3 py-5 sm:px-6 sm:py-8 lg:px-8">
       <article className="mx-auto max-w-4xl overflow-hidden rounded-2xl bg-base-100 shadow-sm">
-        <div className="p-5 sm:p-8 lg:p-10">
+        <div className="p-4 sm:p-8 lg:p-10">
           <div className="mb-5 flex flex-wrap items-center gap-2 text-sm text-red-700">
             {article.topics?.slice(0, 3).map((topic) => (
               <span key={topic.id} className="rounded-full bg-red-50 px-3 py-1">
@@ -85,7 +85,7 @@ const NewsArticlePage = async ({
             ))}
           </div>
 
-          <h1 className="text-3xl font-bold leading-tight text-base-content sm:text-5xl">
+          <h1 className="break-words text-2xl font-bold leading-tight text-base-content sm:text-4xl lg:text-5xl">
             {article.title}
           </h1>
 
@@ -118,12 +118,12 @@ const NewsArticlePage = async ({
           </figure>
 
           {summary && (
-            <p className="mt-8 border-l-4 border-red-700 pl-4 text-xl font-semibold leading-relaxed text-base-content/80">
+            <p className="mt-8 border-l-4 border-red-700 pl-3 text-lg font-semibold leading-relaxed text-base-content/80 sm:pl-4 sm:text-xl">
               {summary}
             </p>
           )}
 
-          <div className="mt-8 space-y-7 text-lg leading-[2] text-base-content/85">
+          <div className="mt-8 space-y-7 text-base leading-[1.9] text-base-content/85 sm:text-lg sm:leading-[2]">
             {article.body?.map((block, index) =>
               block.type === "text" ? (
                 <p key={`text-${index}`} className="whitespace-pre-line">

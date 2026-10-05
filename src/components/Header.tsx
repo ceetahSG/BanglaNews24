@@ -9,18 +9,20 @@ const Header = () => {
     dateStyle: "full",
   });
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-4 p-4 ml-150">
+    <div className="mx-auto w-full max-w-7xl">
+      <div className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="flex min-w-0 items-center gap-3">
           <Image src={Logo} alt="Logo" width={50} height={50} />
-          <div>
-            <h1 className="text-xl font-bold text-red-700">Bangla News 24</h1>
-            <p>{formattedDate}</p>
+          <div className="min-w-0">
+            <h1 className="truncate text-lg font-bold text-red-700 sm:text-xl">
+              Bangla News 24
+            </h1>
+            <p className="text-sm sm:text-base">{formattedDate}</p>
           </div>
         </div>
-        <div className="flex gap-4 p-4">
-          <button className="btn ">সাইন ইন</button>
-          <button className="btn btn-secondary bg-red-700 text-white">
+        <div className="flex gap-2 sm:shrink-0 sm:gap-4">
+          <button className="btn btn-sm sm:btn-md">সাইন ইন</button>
+          <button className="btn btn-secondary btn-sm bg-red-700 text-white sm:btn-md">
             সাইন আপ
           </button>
         </div>

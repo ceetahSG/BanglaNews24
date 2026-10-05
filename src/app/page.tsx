@@ -18,17 +18,17 @@ export default async function Home() {
   // console.log(otherSections[0].articles[0].title);
 
   return (
-    <div>
-      <div className="container mx-auto grid grid-cols-3 ">
+    <div className="w-full">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-3 lg:gap-8 lg:px-8">
         {/* Main News */}
-        <div className="col-span-2 m-5 ">
+        <div className="min-w-0 lg:col-span-2">
           <MainNews mainNews={mainNews}></MainNews>
           {otherSections.map((section) => (
-            <div key={section.curationId} className="m-5  ">
+            <div key={section.curationId} className="mt-8">
               <h1 className="text-xl font-bold border-b-2 border-red-700 pb-3">
                 {section.title}
               </h1>
-              <div className="grid grid-cols-3 gap-4 mt-5 hover:cursor-pointer">
+              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {section.articles.map((article) => (
                   <NewsCard key={article.id} news={article}></NewsCard>
                 ))}
@@ -37,7 +37,7 @@ export default async function Home() {
           ))}
         </div>
         {/* Maximum Read news */}
-        <div className="col-span-1 m-5">
+        <div className="min-w-0 lg:col-span-1">
           <MostRead></MostRead>
         </div>
       </div>

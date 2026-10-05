@@ -10,14 +10,14 @@ const MostRead = async () => {
   const mostReadNews: IMostRead[] = res.data;
   // console.log(mostReadNews);
   return (
-    <div className="border-gray-300 border p-5">
-      <h2 className="text-2xl">সর্বাধিক পঠিত</h2>
+    <div className="border border-gray-300 p-4 sm:p-5">
+      <h2 className="text-xl sm:text-2xl">সর্বাধিক পঠিত</h2>
       {mostReadNews.map((news, i) => (
         <div key={news.id}>
           <ul>
-            <li className="text-lg font-bold m-2 flex gap-4">
-              <div className="text-red-600 text-xl">{i + 1}</div>
-              <div>{news.title}</div>
+            <li className="m-2 flex gap-3 text-base font-bold sm:gap-4 sm:text-lg">
+              <div className="text-xl text-red-600">{i + 1}</div>
+              <div className="min-w-0">{news.title}</div>
             </li>
           </ul>
         </div>

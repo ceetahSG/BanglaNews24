@@ -18,14 +18,18 @@ const NavLinks = async () => {
   );
 
   return (
-    <div className="flex gap-4 p-4 justify-center items-center">
-      <Link href={"/"}>হোম</Link>
-      {filteredCategories.map((n, i) => (
-        <a key={i} href={`/category/${n.slug}`}>
-          {n.title}
-        </a>
-      ))}
-    </div>
+    <nav className="w-full overflow-x-auto border-y border-base-300 px-4 py-3">
+      <div className="mx-auto flex min-w-max items-center justify-start gap-5 text-sm sm:justify-center sm:text-base">
+        <Link href={"/"} className="shrink-0">
+          হোম
+        </Link>
+        {filteredCategories.map((n, i) => (
+          <Link key={i} href={`/category/${n.slug}`} className="shrink-0">
+            {n.title}
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 };
 

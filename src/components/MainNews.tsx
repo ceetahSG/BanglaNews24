@@ -6,7 +6,7 @@ const MainNews = ({ mainNews }: { mainNews: IArticle[] }) => {
   const firstNews = mainNews[0];
 
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <div className="card bg-base-100 shadow-sm">
         <figure>
           <Image
@@ -19,7 +19,7 @@ const MainNews = ({ mainNews }: { mainNews: IArticle[] }) => {
         </figure>
         <div className="card-body">
           <p className="text-red-700 ">প্রধান খবর</p>
-          <h2 className="card-title text-2xl">{firstNews.title}</h2>
+          <h2 className="card-title text-xl sm:text-2xl">{firstNews.title}</h2>
           <p>
             {firstNews.description.length > 300
               ? firstNews.description.substring(0, 300) + "..."
@@ -35,7 +35,7 @@ const MainNews = ({ mainNews }: { mainNews: IArticle[] }) => {
           >
             <div className="card-body">
               <p className="text-red-700">প্রধান খবর</p>
-              <h2 className="card-title">{news.title}</h2>
+              <h2 className="card-title text-lg sm:text-xl">{news.title}</h2>
             </div>
           </div>
         ))}

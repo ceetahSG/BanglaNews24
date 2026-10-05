@@ -22,8 +22,8 @@ const Marquee = async () => {
   const news: News[] = data.data;
   return (
     <div className="bg-red-700 text-white">
-      <div className="flex items-center container mx-auto">
-        <div className="bg-red-600 p-2 px-4">
+      <div className="mx-auto flex w-full max-w-7xl items-center">
+        <div className="shrink-0 bg-red-600 px-3 py-2 sm:px-4">
           <h2>সর্বশেষ</h2>
         </div>
         <MarqueeText

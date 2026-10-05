@@ -15,11 +15,11 @@ const CategoryNews = async ({
   const categoryNews = data.data;
   console.log(categoryNews);
   return (
-    <div className="container mx-auto">
-      <h2 className="text-2xl font-bold border-b-2 border-red-700 pb-3 m-5">
+    <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h2 className="border-b-2 border-red-700 pb-3 text-xl font-bold sm:text-2xl">
         {data.title}
       </h2>
-      <div className="grid grid-cols-3 gap-4 m-5">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {categoryNews.map((news: IArticle, i: number) => (
           <NewsCard key={i} news={news}></NewsCard>
         ))}

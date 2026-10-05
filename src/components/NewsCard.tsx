@@ -37,7 +37,7 @@ const NewsCard = ({ news }: { news: IArticle }) => {
         </figure>
         <div className="card-body">
           <p className="text-red-700 ">{news.category}</p>
-          <h2 className="card-title text-2xl">{news.title}</h2>
+          <h2 className="card-title text-xl sm:text-2xl">{news.title}</h2>
           {news.description && <p>{news.description.slice(0, 100)}...</p>}
           <p className="text-sm text-gray-500">{formattedDate}</p>
         </div>
