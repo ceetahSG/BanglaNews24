@@ -19,7 +19,6 @@ export default async function Home() {
 
   return (
     <div>
-      
       <div className="container mx-auto grid grid-cols-3 ">
         {/* Main News */}
         <div className="col-span-2 m-5 ">
@@ -29,7 +28,7 @@ export default async function Home() {
               <h1 className="text-xl font-bold border-b-2 border-red-700 pb-3">
                 {section.title}
               </h1>
-              <div className="grid grid-cols-3 gap-4 mt-5">
+              <div className="grid grid-cols-3 gap-4 mt-5 hover:cursor-pointer">
                 {section.articles.map((article) => (
                   <NewsCard key={article.id} news={article}></NewsCard>
                 ))}

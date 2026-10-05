@@ -29,7 +29,10 @@ const MainNews = ({ mainNews }: { mainNews: IArticle[] }) => {
       </div>
       <div>
         {mainNews.slice(1, 5).map((news) => (
-          <div key={news.id} className="card card-border bg-base-100">
+          <div
+            key={news.id}
+            className="card card-border bg-base-100 hover:shadow-md transition-shadow duration-300"
+          >
             <div className="card-body">
               <p className="text-red-700">প্রধান খবর</p>
               <h2 className="card-title">{news.title}</h2>
