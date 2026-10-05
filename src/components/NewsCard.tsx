@@ -21,7 +21,6 @@ const NewsCard = ({ news }: { news: IArticle }) => {
   const formattedDate = date.toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
-  console.log("news from news cardd", news);
 
   return (
     <Link href={`/news/${news.id}`} className="block">
