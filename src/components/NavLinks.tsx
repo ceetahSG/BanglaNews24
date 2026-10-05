@@ -12,7 +12,7 @@ const NavLinks = async () => {
   const res = await fetch("https://news-api-v2.vercel.app/api/categories");
   const data = await res.json();
   const categories: Navs[] = data.data;
-  console.log(categories);
+//   console.log(categories);
   const filteredCategories = categories.filter(
     (category) => category.scrapable,
   );

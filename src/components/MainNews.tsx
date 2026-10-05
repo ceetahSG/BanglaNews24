@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { IMainNews } from "@/app/page";
+import { IArticle } from "./NewsCard";
 
-const MainNews = ({ mainNews }: { mainNews: IMainNews[] }) => {
+const MainNews = ({ mainNews }: { mainNews: IArticle[] }) => {
   const firstNews = mainNews[0];
 
   return (
