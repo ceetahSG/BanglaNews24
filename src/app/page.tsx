@@ -1,5 +1,4 @@
 import MainNews from "@/components/MainNews";
-import Marquee from "@/components/Marquee";
 import MostRead from "@/components/MostRead";
 import NewsCard, { IArticle } from "@/components/NewsCard";
 interface IOtherSection {
@@ -20,7 +19,7 @@ export default async function Home() {
 
   return (
     <div>
-      <Marquee></Marquee>
+      
       <div className="container mx-auto grid grid-cols-3 ">
         {/* Main News */}
         <div className="col-span-2 m-5 ">

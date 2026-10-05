@@ -27,8 +27,9 @@ const NewsCard = ({ news }: { news: IArticle }) => {
         <Image
           src={news.imageUrl}
           alt={news.imageAlt}
-          height={200}
-          width={400}
+          height={300}
+          width={600}
+          layout="responsive"
         />
       </figure>
       <div className="card-body">

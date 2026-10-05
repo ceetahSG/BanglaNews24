@@ -12,7 +12,7 @@ const NavLinks = async () => {
   const res = await fetch("https://news-api-v2.vercel.app/api/categories");
   const data = await res.json();
   const categories: Navs[] = data.data;
-//   console.log(categories);
+  //   console.log(categories);
   const filteredCategories = categories.filter(
     (category) => category.scrapable,
   );
@@ -21,7 +21,7 @@ const NavLinks = async () => {
     <div className="flex gap-4 p-4 justify-center items-center">
       <Link href={"/"}>হোম</Link>
       {filteredCategories.map((n, i) => (
-        <a key={i} href={n.slug}>
+        <a key={i} href={`/category/${n.slug}`}>
           {n.title}
         </a>
       ))}
