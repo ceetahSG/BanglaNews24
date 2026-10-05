@@ -19,7 +19,7 @@ export default async function Home() {
 
   return (
     <div className="w-full">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-3 lg:gap-8 lg:px-8">
+      <div className="mx-auto grid w-full m-5 max-w-7xl grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-3 lg:gap-8 lg:px-8">
         {/* Main News */}
         <div className="min-w-0 lg:col-span-2">
           <MainNews mainNews={mainNews}></MainNews>
@@ -37,7 +37,7 @@ export default async function Home() {
           ))}
         </div>
         {/* Maximum Read news */}
-        <div className="min-w-0 lg:col-span-1">
+        <div className="min-w-0 lg:col-span-1 ">
           <MostRead></MostRead>
         </div>
       </div>
