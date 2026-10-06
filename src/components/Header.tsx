@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Logo from "@/assetes/logo.webp";
 import NavLinks, { Navs } from "./NavLinks";
+import Link from "next/link";
 
 const Header = async () => {
   const date = new Date();
@@ -34,11 +35,15 @@ const Header = async () => {
         </div>
 
         <div className="flex gap-2 sm:shrink-0 sm:gap-4">
-          <button className="btn btn-sm sm:btn-md">সাইন ইন</button>
+          <Link href="/signin">
+            <button className="btn btn-sm sm:btn-md">সাইন ইন</button>
+          </Link>
 
-          <button className="btn btn-secondary btn-sm bg-red-700 text-white sm:btn-md">
-            সাইন আপ
-          </button>
+          <Link href="/signup">
+            <button className="btn btn-secondary btn-sm bg-red-700 text-white sm:btn-md">
+              সাইন আপ
+            </button>
+          </Link>
         </div>
       </div>
 
