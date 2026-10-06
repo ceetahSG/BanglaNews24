@@ -6,7 +6,12 @@ export interface IMostRead {
 }
 
 const MostRead = async () => {
-  const data = await fetch("https://news-api-v2.vercel.app/api/news/most-read");
+  const data = await fetch(
+    "https://news-api-v2.vercel.app/api/news/most-read",
+    {
+      cache: "no-store",
+    },
+  );
   const res = await data.json();
   const mostReadNews: IMostRead[] = res.data;
   // console.log(mostReadNews);

@@ -10,7 +10,9 @@ const Header = async () => {
     dateStyle: "full",
   });
 
-  const res = await fetch("https://news-api-v2.vercel.app/api/categories");
+  const res = await fetch("https://news-api-v2.vercel.app/api/categories", {
+    cache: "no-store",
+  });
 
   const data = await res.json();
 

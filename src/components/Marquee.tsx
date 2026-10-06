@@ -18,7 +18,9 @@ export interface News {
 }
 
 const Marquee = async () => {
-  const res = await fetch("https://news-api-v2.vercel.app/api/news");
+  const res = await fetch("https://news-api-v2.vercel.app/api/news", {
+    cache: "no-store",
+  });
   const data = await res.json();
   const news: News[] = data.data;
   return (

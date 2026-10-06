@@ -8,7 +8,9 @@ interface IOtherSection {
 }
 
 export default async function Home() {
-  const data = await fetch("https://news-api-v2.vercel.app/api/news/sections");
+  const data = await fetch("https://news-api-v2.vercel.app/api/news/sections", {
+    cache: "no-store",
+  });
   const res = await data.json();
   const sections = res.data;
   const mainNews = sections[0].articles;

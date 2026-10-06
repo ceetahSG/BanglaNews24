@@ -12,7 +12,6 @@ const notoSerifBengali = Noto_Serif_Bengali({
 export const metadata: Metadata = {
   title: "Bangla News 24",
   description: "Daily Bangla News Portal",
-  
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -31,3 +30,4 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+export const dynamic = "force-dynamic";
