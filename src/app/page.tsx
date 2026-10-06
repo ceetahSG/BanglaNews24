@@ -1,4 +1,3 @@
-import AuritoVSNiloy from "@/components/AuritoVSNiloy";
 import MainNews from "@/components/MainNews";
 import MostRead from "@/components/MostRead";
 import NewsCard, { IArticle } from "@/components/NewsCard";
@@ -34,7 +33,7 @@ export default async function Home() {
               </h1>
               <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 <Link href="/aurito-vs-niloy">
-                  <AuritoVSNiloy></AuritoVSNiloy>
+                  {/* <AuritoVSNiloy></AuritoVSNiloy> */}
                 </Link>
                 {section.articles.map((article) => (
                   <NewsCard key={article.id} news={article}></NewsCard>
