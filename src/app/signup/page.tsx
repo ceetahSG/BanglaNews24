@@ -1,9 +1,10 @@
 import React from "react";
+import Link from "next/link";
 
 const SignUpPage = () => {
   return (
-    <div className="flex items-center justify-center mt-10 ">
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 bg-red-100">
+    <div className="flex flex-col gap-5 items-center justify-center mt-10 ">
+      <fieldset className="fieldset  border-base-300 rounded-box w-xs border p-4 bg-red-100">
         <h2 className=" text-2xl font-bold flex items-center justify-center text-red-700">
           সাইন আপ
         </h2>
@@ -31,6 +32,14 @@ const SignUpPage = () => {
           সাইন আপ করুন
         </button>
       </fieldset>
+      <div>
+        <p>
+          অ্যাকাউন্ট আছে?
+          <span className="text-red-700 hover:underline cursor-pointer">
+            <Link href="/signin"> সাইন ইন করুন</Link>
+          </span>
+        </p>
+      </div>
     </div>
   );
 };
