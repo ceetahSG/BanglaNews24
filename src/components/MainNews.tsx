@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const MainNews = ({ mainNews }: { mainNews: IArticle[] }) => {
   const firstNews = mainNews[0];
-  console.log(firstNews);
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

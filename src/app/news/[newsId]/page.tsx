@@ -61,10 +61,11 @@ const NewsArticlePage = async ({
   params: Promise<{ newsId: string }>;
 }) => {
   const { newsId } = await params;
+  console.log("Fetching article with ID:", newsId);
   const res = await fetch(
     `https://news-api-v2.vercel.app/api/article/${newsId}`,
   );
-
+  console.log("Response status:", res);
   if (!res.ok) {
     throw new Error("Article could not be loaded.");
   }
@@ -106,16 +107,18 @@ const NewsArticlePage = async ({
             )}
           </div>
 
-          <figure className="mt-8">
-            <Image
-              src={article.imageUrl}
-              alt={article.title}
-              width={1200}
-              height={675}
-              className="h-auto w-full rounded-xl object-cover"
-              priority
-            />
-          </figure>
+          {article.imageUrl?.trim() && (
+            <figure className="mt-8">
+              <Image
+                src={article.imageUrl}
+                alt={article.title}
+                width={1200}
+                height={675}
+                className="h-auto w-full rounded-xl object-cover"
+                priority
+              />
+            </figure>
+          )}
 
           {summary && (
             <p className="mt-8 border-l-4 border-red-700 pl-3 text-lg font-semibold leading-relaxed text-base-content/80 sm:pl-4 sm:text-xl">
@@ -129,7 +132,7 @@ const NewsArticlePage = async ({
                 <p key={`text-${index}`} className="whitespace-pre-line">
                   {block.text}
                 </p>
-              ) : (
+              ) : !block.url?.trim() ? null : (
                 <figure key={`image-${index}`} className="my-8">
                   <Image
                     src={block.url}
