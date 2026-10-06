@@ -107,19 +107,6 @@ const NewsArticlePage = async ({
             )}
           </div>
 
-          {article.imageUrl?.trim() && (
-            <figure className="mt-8">
-              <Image
-                src={article.imageUrl}
-                alt={article.title}
-                width={1200}
-                height={675}
-                className="h-auto w-full rounded-xl object-cover"
-                priority
-              />
-            </figure>
-          )}
-
           {summary && (
             <p className="mt-8 border-l-4 border-red-700 pl-3 text-lg font-semibold leading-relaxed text-base-content/80 sm:pl-4 sm:text-xl">
               {summary}
