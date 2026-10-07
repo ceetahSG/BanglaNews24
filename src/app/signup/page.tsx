@@ -33,7 +33,7 @@ const SignUpPage = () => {
 
       if (data) {
         toast.success("সফলভাবে সাইন আপ হয়েছে।");
-        router.push("/signin");
+        router.push("/");
       }
     } catch (error) {
       console.error("Sign-up error:", error);
