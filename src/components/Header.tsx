@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Logo from "@/assetes/logo.webp";
 import NavLinks, { Navs } from "./NavLinks";
-import Link from "next/link";
 import Userinfo from "./Userinfo";
 
 const Header = async () => {

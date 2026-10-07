@@ -6,7 +6,7 @@ const NotFoundPage = () => {
       <div className="mx-auto w-full max-w-3xl">
         <div className="relative overflow-hidden rounded-2xl border border-base-300 bg-base-100 px-6 py-12 text-center shadow-sm sm:px-12 sm:py-16">
           <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full bg-red-100/70" />
-          <div className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full border-[24px] border-red-50" />
+          <div className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full border-24 border-red-50" />
 
           <div className="relative">
             <p className="text-sm font-bold uppercase tracking-[0.35em] text-red-700">

@@ -96,7 +96,7 @@ const NewsArticlePage = async ({
             ))}
           </div>
 
-          <h1 className="break-words text-2xl font-bold leading-tight text-base-content sm:text-4xl lg:text-5xl">
+          <h1 className="wrap-break-word text-2xl font-bold leading-tight text-base-content sm:text-4xl lg:text-5xl">
             {article.title}
           </h1>
 
@@ -123,7 +123,7 @@ const NewsArticlePage = async ({
             </p>
           )}
 
-          <div className="mt-8 space-y-7 text-base leading-[1.9] text-base-content/85 sm:text-lg sm:leading-[2]">
+          <div className="mt-8 space-y-7 text-base leading-[1.9] text-base-content/85 sm:text-lg sm:leading-loose">
             {article.body?.map((block, index) =>
               block.type === "text" ? (
                 <p key={`text-${index}`} className="whitespace-pre-line">
