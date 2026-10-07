@@ -31,7 +31,7 @@ const NewsCard = ({ news }: { news: IArticle }) => {
             alt={news.imageAlt}
             height={300}
             width={600}
-            layout="responsive"
+            className="h-auto w-full"
           />
         </figure>
         <div className="card-body">

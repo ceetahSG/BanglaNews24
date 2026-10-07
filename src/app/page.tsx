@@ -1,7 +1,6 @@
 import MainNews from "@/components/MainNews";
 import MostRead from "@/components/MostRead";
 import NewsCard, { IArticle } from "@/components/NewsCard";
-import Link from "next/link";
 interface IOtherSection {
   curationId: string;
   title: string;
