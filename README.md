@@ -1,36 +1,167 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bangla News 24
+
+A modern Bengali news portal built with Next.js, TypeScript, Tailwind CSS, and MongoDB-backed authentication. The application presents current news, categorized articles, popular stories, and user authentication in a responsive interface optimized for Bengali content.
+
+**Live site:** [bangla-news24-rho.vercel.app](https://bangla-news24-rho.vercel.app)
+
+## Features
+
+- Bengali news portal homepage with curated news sections
+- Featured/main news stories and reusable news cards
+- Most-read news section
+- Category-based news pages
+- Individual news article pages
+- Scrolling news ticker/marquee
+- Responsive navigation, header, and footer
+- User sign-up and sign-in flows
+- Email/password authentication with Better Auth
+- MongoDB database integration for authentication data
+- Bengali typography using the Noto Serif Bengali font
+- Loading and not-found states
+- Toast notifications for user feedback
+- Remote news images served from BBC image infrastructure
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) 16 with the App Router
+- [React](https://react.dev/) 19
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) 4
+- [DaisyUI](https://daisyui.com/)
+- [Better Auth](https://www.better-auth.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [ESLint](https://eslint.org/)
+- [Vercel](https://vercel.com/) for deployment
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20 or newer
+- npm, pnpm, Yarn, or Bun
+- A MongoDB deployment, such as [MongoDB Atlas](https://www.mongodb.com/atlas)
+
+### Installation
+
+Clone the repository and install its dependencies:
+
+```bash
+git clone https://github.com/ceetahSG/BanglaNews24.git
+cd BanglaNews24
+npm install
+```
+
+### Environment variables
+
+Create a `.env.local` file in the project root:
+
+```env
+MONGODB_URL=your_mongodb_connection_string
+BETTER_AUTH_URL=http://localhost:3000
+```
+
+`MONGODB_URL` is used by Better Auth to connect to the MongoDB database. `BETTER_AUTH_URL` should contain the base URL of the application; use the production URL when deploying.
+
+Do not commit `.env.local` or any other file containing secrets.
+
+### Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+.
+├── public/                 # Static assets
+├── src/
+│   ├── app/                # Next.js routes, layouts, and API handlers
+│   │   ├── api/auth/       # Better Auth API route
+│   │   ├── category/       # Category pages
+│   │   ├── news/           # Individual article pages
+│   │   ├── signin/         # Sign-in page
+│   │   ├── signup/         # Sign-up page
+│   │   ├── layout.tsx      # Root layout and shared UI
+│   │   └── page.tsx        # Homepage
+│   ├── components/         # Reusable UI components
+│   ├── lib/                # Authentication clients and server utilities
+│   └── assetes/            # Application assets
+├── next.config.ts          # Next.js configuration
+├── postcss.config.mjs      # PostCSS configuration
+├── package.json            # Scripts and dependencies
+└── tsconfig.json           # TypeScript configuration
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## News Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The homepage currently retrieves curated news sections from the external news service below:
 
-## Deploy on Vercel
+```text
+https://news-api-v2.vercel.app/api/news/sections
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application requests fresh data without caching so that the homepage can display current content. Availability and response format depend on the external service.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Authentication
+
+Authentication is implemented with Better Auth and MongoDB. Email/password authentication is enabled, and the auth handler is exposed through the Next.js API route at:
+
+```text
+/api/auth/[...all]
+```
+
+Before using sign-up or sign-in locally, make sure `MONGODB_URL` and `BETTER_AUTH_URL` are configured correctly.
+
+## Deployment
+
+The project is configured for deployment on Vercel:
+
+1. Import the repository into Vercel.
+2. Configure the `MONGODB_URL` environment variable.
+3. Configure `BETTER_AUTH_URL` with the deployed application URL.
+4. Deploy using the default Next.js build settings.
+
+For a local production check:
+
+```bash
+npm run build
+npm run start
+```
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch:
+
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+3. Make your changes and run the checks:
+
+   ```bash
+   npm run lint
+   npm run build
+   ```
+
+4. Commit your changes and open a pull request.
+
+## License
+
+No license has currently been specified for this repository. Contact the repository owner before redistributing or using the project commercially.
+
+## Author
+
+Built and maintained by [ceetahSG](https://github.com/ceetahSG).
