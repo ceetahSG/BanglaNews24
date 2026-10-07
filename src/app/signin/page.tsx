@@ -1,24 +1,36 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { SubmitEvent } from "react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
+  const router = useRouter();
+
   const handleSignIn = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-    const { data, error } = await authClient.signIn.email({
-      email: userData.Email as string,
-      password: userData.password as string,
-      callbackURL: "/",
-    });
-    if (data) {
-      console.log("Sign-in successful:", data);
-      redirect("/");
-    } else {
+    try {
+      const { data, error } = await authClient.signIn.email({
+        email: userData.Email as string,
+        password: userData.password as string,
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "সাইন ইন করা যায়নি।");
+        return;
+      }
+
+      if (data) {
+        toast.success("সফলভাবে সাইন ইন হয়েছে।");
+        router.push("/");
+      }
+    } catch (error) {
       console.error("Sign-in error:", error);
+      toast.error("সাইন ইন করার সময় একটি সমস্যা হয়েছে।");
     }
   };
   return (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 type ArticleBlock =
   | {
@@ -10,6 +11,15 @@ type ArticleBlock =
       caption: string | null;
       altText: string;
       copyrightHolder: string | null;
+    }
+  | {
+      type: "video";
+      url: string;
+      width?: number;
+      height?: number;
+      poster?: string | null;
+      caption?: string | null;
+      copyrightHolder?: string | null;
     }
   | {
       type: "text";
@@ -61,13 +71,13 @@ const NewsArticlePage = async ({
   params: Promise<{ newsId: string }>;
 }) => {
   const { newsId } = await params;
-  console.log("Fetching article with ID:", newsId);
+  // console.log("Fetching article with ID:", newsId);
   const res = await fetch(
     `https://news-api-v2.vercel.app/api/article/${newsId}`,
   );
-  console.log("Response status:", res);
+  // console.log("Response status:", res);
   if (!res.ok) {
-    throw new Error("Article could not be loaded.");
+    redirect("/not-found");
   }
 
   const data: { data: ArticleData } = await res.json();
@@ -119,6 +129,28 @@ const NewsArticlePage = async ({
                 <p key={`text-${index}`} className="whitespace-pre-line">
                   {block.text}
                 </p>
+              ) : block.type === "video" ? (
+                !block.url?.trim() ? null : (
+                  <figure key={`video-${index}`} className="my-8">
+                    <video
+                      controls
+                      preload="metadata"
+                      poster={block.poster ?? undefined}
+                      width={block.width}
+                      height={block.height}
+                      className="h-auto w-full rounded-xl bg-black"
+                    >
+                      <source src={block.url} />
+                      আপনার ব্রাউজার ভিডিও প্লেব্যাক সমর্থন করে না।
+                    </video>
+                    {(block.caption || block.copyrightHolder) && (
+                      <figcaption className="mt-2 text-sm leading-relaxed text-base-content/60">
+                        {block.caption}
+                        {block.copyrightHolder && ` (${block.copyrightHolder})`}
+                      </figcaption>
+                    )}
+                  </figure>
+                )
               ) : !block.url?.trim() ? null : (
                 <figure key={`image-${index}`} className="my-8">
                   <Image

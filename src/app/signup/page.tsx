@@ -1,10 +1,14 @@
 "use client";
-import React, { SubmitEvent } from "react";
-import Link from "next/link";
+
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { SubmitEvent } from "react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
+  const router = useRouter();
+
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -13,27 +17,37 @@ const SignUpPage = () => {
       Email: string;
       password: string;
     };
-    console.log("User Data:", userData);
-    const { data, error } = await authClient.signUp.email({
-      name: userData.Name,
-      email: userData.Email,
-      password: userData.password,
-      callbackURL: "/",
-    });
-    if (data) {
-      console.log("Sign-up successful:", data);
-      redirect("/signin");
-    } else {
+
+    try {
+      const { data, error } = await authClient.signUp.email({
+        name: userData.Name,
+        email: userData.Email,
+        password: userData.password,
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "সাইন আপ করা যায়নি।");
+        return;
+      }
+
+      if (data) {
+        toast.success("সফলভাবে সাইন আপ হয়েছে।");
+        router.push("/signin");
+      }
+    } catch (error) {
       console.error("Sign-up error:", error);
+      toast.error("সাইন আপ করার সময় একটি সমস্যা হয়েছে।");
     }
   };
+
   return (
-    <div className="flex flex-col gap-5 items-center justify-center mt-10 ">
+    <div className="mt-10 flex flex-col items-center justify-center gap-5">
       <form
         onSubmit={handleSubmit}
-        className="fieldset  border-base-300 rounded-box w-xs border p-4 bg-red-100"
+        className="fieldset w-xs rounded-box border border-base-300 bg-red-100 p-4"
       >
-        <h2 className=" text-2xl font-bold flex items-center justify-center text-red-700">
+        <h2 className="flex items-center justify-center text-2xl font-bold text-red-700">
           সাইন আপ
         </h2>
 
@@ -56,14 +70,14 @@ const SignUpPage = () => {
           placeholder="Password"
         />
 
-        <button type="submit" className="btn btn-neutral bg-red-700 mt-4">
+        <button type="submit" className="btn mt-4 bg-red-700 text-white">
           সাইন আপ করুন
         </button>
       </form>
       <div>
         <p>
           অ্যাকাউন্ট আছে?
-          <span className="text-red-700 hover:underline cursor-pointer">
+          <span className="cursor-pointer text-red-700 hover:underline">
             <Link href="/signin"> সাইন ইন করুন</Link>
           </span>
         </p>
